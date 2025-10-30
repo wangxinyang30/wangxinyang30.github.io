@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数字展销平台-秋分</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "微软雅黑", sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 头部区域 */
+        header {
+            background-color: #f8f8f8;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+        }
+        
+        .logo {
+            float: left;
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        nav {
+            float: right;
+            margin-right: 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+            border-radius: 3px;
+        }
+        
+        /* 主体内容区 */
+        .container {
+            width: 1200px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        
+        .left-column {
+            width: 220px;
+            float: left;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .left-column h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .left-column ul {
+            list-style: none;
+        }
+        
+        .left-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .left-column ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .left-column ul li a:hover {
+            background-color: #333;
+            color: #fff;
+            border-radius: 3px;
+        }
+        
+        /* 中间内容区 */
+        .middle-column {
+            width: 700px;
+            float: left;
+            margin-right: 20px;
+        }
+        
+        .book-item {
+            width: 220px;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .book-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .book-item h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .book-item p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .book-item .price {
+            font-size: 18px;
+            color: #e4393c;
+            font-weight: bold;
+        }
+        
+        .book-item a {
+            display: block;
+            text-align: center;
+            background-color: #e4393c;
+            color: #fff;
+            padding: 5px;
+            text-decoration: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .book-item a:hover {
+            background-color: #c8102e;
+        }
+        
+        /* 右侧促销区 */
+        .right-column {
+            width: 220px;
+            float: right;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .right-column h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .promotion-item {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .promotion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .promotion-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 5px;
+        }
+        
+        .promotion-item p {
+            font-size: 14px;
+            color: #e4393c;
+            font-weight: bold;
+        }
+        
+        /* 新书上市表格 */
+        .new-books {
+            clear: both;
+            margin-top: 30px;
+        }
+        
+        .new-books h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e4393c;
+            padding-bottom: 5px;
+        }
+        
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .new-books table th,
+        .new-books table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .new-books table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        
+        /* 页脚 */
+        footer {
+            clear: both;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="logo">数字展销平台</div>
+        <nav>
+            <ul>
+                <li><a href=" ">首页</a ></li>
+                <li><a href="#">图书分类</a ></li>
+                <li><a href="#">新书上市</a ></li>
+                <li><a href="#">促销活动</a ></li>
+                <li><a href="#">关于我们</a ></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 主体内容区 -->
+    <div class="container">
+        <!-- 左侧栏-图书分类导航 -->
+        <div class="left-column">
+            <h2>图书分类</h2>
+            <ul>
+                <li><a href="#">小说</a ></li>
+                <li><a href="#">科技</a ></li>
+                <li><a href="#">经济管理</a ></li>
+                <li><a href="#">励志成功</a ></li>
+                <li><a href="#">生活</a ></li>
+                <li><a href="#">少儿</a ></li>
+                <li><a href="#">艺术</a ></li>
+                <li><a href="#">考试</a ></li>
+                <li><a href="#">外语</a ></li>
+                <li><a href="#">历史</a ></li>
+            </ul>
+        </div>
+        
+        <!-- 中间栏-图书展示区 -->
+        <div class="middle-column">
+            <h2>热门推荐</h2>
+            <div class="book-item">
+                <img src="高数.jpg" alt="图书1">
+                <h3>高等数学</h3>
+                <p>作者：王昕炀</p >
+                <p class="price">¥59.00</p >
+                <a href="#">立即购买</a >
+            </div>
+            <div class="book-item">
+                <img src="Linux.jpg" alt="图书2">
+                <h3>Linux应用与实训</h3>
+                <p>作者：曲海平</p >
+                <p class="price">¥69.00</p >
+                <a href="#">立即购买</a >
+            </div>
+            <div class="book-item">
+                <img src="软工.jpg" alt="图书3">
+                <h3>软件工程导论</h3>
+                <p>作者：李洪波</p >
+                <p class="price">¥49.00</p >
+                <a href="#">立即购买</a >
+            </div>
+            
+            <!-- 新书上市 -->
+            <div class="new-books">
+                <h2>新书上市</h2>
+                <table>
+                    <tr>
+                        <<th>书名</</th>
+                        <<th>作者</</th>
+                        <<th>价格</</th>
+                        <<th>购买</</th>
+                    </tr>
+                    <tr>
+                        <td>高等数学</td>
+                        <td>王昕炀</td>
+                        <td>¥59.00</td>
+                        <td><a href="#">购买</a ></td>
+                    </tr>
+                    <tr>
+                        <td>Linux应用与实训</td>
+                        <td>曲海平</td>
+                        <td>¥69.00</td>
+                        <td><a href="#">购买</a ></td>
+                    </tr>
+                    <tr>
+                        <td>软件工程导论</td>
+                        <td>李洪波</td>
+                        <td>¥49.00</td>
+                        <td><a href="#">购买</a ></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 右侧栏-促销信息 -->
+        <div class="right-column">
+            <h2>促销信息</h2>
+            <div class="promotion-item">
+                <img src="高数.jpg" alt="促销1">
+                <p>满100减30</p >
+            </div>
+            <div class="promotion-item">
+                <img src="Linux.jpg" alt="促销2">
+                <p>买一送一</p >
+            </div>
+            <div class="promotion-item">
+                <img src="软工.jpg" alt="促销3">
+                <p>限时折扣</p >
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <p>数字展销平台 &copy; 2025 版权所有</p >
+    </footer>
+</body>
+</html>
